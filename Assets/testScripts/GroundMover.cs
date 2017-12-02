@@ -33,8 +33,9 @@ public class GroundMover : MonoBehaviour
     // Move vector for next update
     Vector3 move;
 
-    // Position to orient player
-    Vector3 lookAt;
+    // Position to orient mover
+    [HideInInspector]
+    public Vector3 lookAt;
 
     void Start()
     {
