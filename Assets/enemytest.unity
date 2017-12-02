@@ -529,7 +529,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1114037749}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1, y: 2.612, z: 1}
+  m_LocalPosition: {x: 1, y: 2, z: 1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 540452941}
@@ -593,7 +593,6 @@ GameObject:
   - component: {fileID: 1476010173}
   - component: {fileID: 1476010172}
   - component: {fileID: 1476010171}
-  - component: {fileID: 1476010170}
   - component: {fileID: 1476010175}
   m_Layer: 0
   m_Name: Cloud
@@ -602,17 +601,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1476010170
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1476010169}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2373b401a0620d440890ffb16bf2b368, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!23 &1476010171
 MeshRenderer:
   m_ObjectHideFlags: 0
