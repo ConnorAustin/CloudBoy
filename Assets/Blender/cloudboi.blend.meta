@@ -17,6 +17,12 @@ ModelImporter:
     100018: UpFanSpinner
     100020: Block
     100022: FanBotCase
+    100024: Boulder
+    100026: DirtMound
+    100028: Flower
+    100030: GrassBlock
+    100032: Star
+    100034: WaterDrop
     400000: CloudBoi
     400002: //RootNode
     400004: Cube
@@ -29,6 +35,12 @@ ModelImporter:
     400018: UpFanSpinner
     400020: Block
     400022: FanBotCase
+    400024: Boulder
+    400026: DirtMound
+    400028: Flower
+    400030: GrassBlock
+    400032: Star
+    400034: WaterDrop
     2300000: CloudBoi
     2300002: Cube
     2300004: Cylinder_000
@@ -40,6 +52,12 @@ ModelImporter:
     2300016: UpFanSpinner
     2300018: Block
     2300020: FanBotCase
+    2300022: Boulder
+    2300024: DirtMound
+    2300026: Flower
+    2300028: GrassBlock
+    2300030: Star
+    2300032: WaterDrop
     3300000: CloudBoi
     3300002: Cube
     3300004: Cylinder_000
@@ -51,6 +69,12 @@ ModelImporter:
     3300016: UpFanSpinner
     3300018: Block
     3300020: FanBotCase
+    3300022: Boulder
+    3300024: DirtMound
+    3300026: Flower
+    3300028: GrassBlock
+    3300030: Star
+    3300032: WaterDrop
     4300000: Foot
     4300002: HatSpinner
     4300004: HatBottom
@@ -62,6 +86,12 @@ ModelImporter:
     4300016: Cylinder_000
     4300018: Block
     4300020: FanBotCase
+    4300022: WaterDrop
+    4300024: Boulder
+    4300026: Star
+    4300028: DirtMound
+    4300030: Flower
+    4300032: GrassBlock
     7400000: Default Take
     9500000: //RootNode
   materials:
