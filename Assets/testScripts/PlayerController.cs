@@ -50,6 +50,7 @@ public class PlayerController : MonoBehaviour
         {
             if (mover.Jump())
             {
+                anim.Jump();
                 audioSource.PlayOneShot(jumpSound);
             }
         }

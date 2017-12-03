@@ -25,6 +25,7 @@ GameObject:
   - component: {fileID: 114482840349119314}
   - component: {fileID: 114117563800344608}
   - component: {fileID: 212418915442027572}
+  - component: {fileID: 114965533167802628}
   m_Layer: 10
   m_Name: Squirt
   m_TagString: Untagged
@@ -83,6 +84,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   froth: {fileID: 1804874006151740, guid: f8dd42d0d700c934894c0c02fc0c9868, type: 2}
+  from: {r: 0.11764705, g: 0.7275086, b: 1, a: 0}
+  to: {r: 0.8382353, g: 0.95004326, b: 1, a: 0}
+  colorSpeed: 1
 --- !u!114 &114482840349119314
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -95,6 +99,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   deathTime: 2
+--- !u!114 &114965533167802628
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1124936210818636}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3bf19dfc167bb864da65812372fd7ddf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fade: 1
+  shrink: 1
+  shrinkSpeed: 0.5
+  fadeSpeed: 1
 --- !u!135 &135600853692925238
 SphereCollider:
   m_ObjectHideFlags: 1
