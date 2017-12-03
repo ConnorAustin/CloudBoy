@@ -173,6 +173,34 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 10.551001, y: -30.000002, z: 0}
+--- !u!1 &250711685
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 250711686}
+  m_Layer: 0
+  m_Name: SquirtZone
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &250711686
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 250711685}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.106, z: 0.451}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1501371340}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &378490164
 GameObject:
   m_ObjectHideFlags: 0
@@ -1172,9 +1200,10 @@ Transform:
   m_GameObject: {fileID: 1501371336}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 4.16, y: 2.79, z: -10.341024}
-  m_LocalScale: {x: 1, y: 0.8002554, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1399250437}
+  - {fileID: 250711686}
   - {fileID: 1652444002}
   m_Father: {fileID: 0}
   m_RootOrder: 3
@@ -1211,6 +1240,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   landSound: {fileID: 8300000, guid: 3b0c22033b86ca749add00d881140533, type: 3}
   jumpSound: {fileID: 8300000, guid: 37c641cf0e119334abd174ae6ddee9b9, type: 3}
+  squirtZone: {fileID: 250711686}
+  squirt: {fileID: 1124936210818636, guid: a125db597e679e84ea19e948a7405f2f, type: 2}
 --- !u!54 &1501371343
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1354,11 +1385,11 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4887839726446938, guid: 9468bfee79e28244f878681da1f02624, type: 2}
       propertyPath: m_RootOrder
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 4887839726446938, guid: 9468bfee79e28244f878681da1f02624, type: 2}
       propertyPath: m_LocalScale.y
-      value: 1.249601
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4887839726446938, guid: 9468bfee79e28244f878681da1f02624, type: 2}
       propertyPath: m_LocalEulerAnglesHint.y

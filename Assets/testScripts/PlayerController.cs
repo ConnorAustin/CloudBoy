@@ -6,6 +6,8 @@ public class PlayerController : MonoBehaviour
 {
     public AudioClip landSound;
     public AudioClip jumpSound;
+    public Transform squirtZone;
+    public GameObject squirt;
 
     CloudBoiAnim anim;
     GroundMover mover;
@@ -31,6 +33,14 @@ public class PlayerController : MonoBehaviour
     {
         float lookAngle = 180.0f + Vector3.SignedAngle(Vector3.right, new Vector3(mover.lookAt.x, 0, -mover.lookAt.z), Vector3.up);
         Camera.main.GetComponent<CamFollow>().UpdateDirection(lookAngle);
+    }
+
+    void Squirt()
+    {
+        var s = GameObject.Instantiate(squirt);
+        s.transform.position = squirtZone.position;
+        var force = mover.lookAt * 500 + Vector3.up * 200;
+        s.GetComponent<Rigidbody>().AddForce(force);
     }
 
     void FixedUpdate()
@@ -70,8 +80,13 @@ public class PlayerController : MonoBehaviour
             idleTime = 0;
             walkAnimSpeed += move.magnitude;
             walkAnimSpeed = Mathf.Min(20, walkAnimSpeed);
-            
+
             anim.stride = walkAnimSpeed;
+        }
+
+        if (Input.GetKey(KeyCode.RightControl))
+        {
+            Squirt();
         }
 
         if (Input.GetKeyDown(KeyCode.LeftControl))
