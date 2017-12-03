@@ -7,14 +7,17 @@ public class PlayerController : MonoBehaviour
     public AudioClip landSound;
     public AudioClip jumpSound;
 
+    CloudBoiAnim anim;
     GroundMover mover;
     AudioSource audioSource;
     float idleTime;
+    float walkAnimSpeed;
 
     void Start()
     {
         mover = GetComponent<GroundMover>();
         audioSource = GetComponent<AudioSource>();
+        anim = transform.Find("CloudBoi").GetComponent<CloudBoiAnim>();
     }
 
     // Sent from mover
@@ -53,7 +56,9 @@ public class PlayerController : MonoBehaviour
         mover.Move(move);
         if (move.magnitude < 0.1f)
         {
+            anim.setWalking(false);
             idleTime += Time.deltaTime;
+            walkAnimSpeed = 0;
             if (idleTime > 0.6f)
             {
                 UpdateCamLook();
@@ -61,10 +66,15 @@ public class PlayerController : MonoBehaviour
         }
         else
         {
+            anim.setWalking(true);
             idleTime = 0;
+            walkAnimSpeed += move.magnitude;
+            walkAnimSpeed = Mathf.Min(20, walkAnimSpeed);
+            
+            anim.stride = walkAnimSpeed;
         }
 
-        if(Input.GetKeyDown(KeyCode.LeftControl))
+        if (Input.GetKeyDown(KeyCode.LeftControl))
         {
             UpdateCamLook();
         }
