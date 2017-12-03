@@ -27,6 +27,7 @@ public class PlayerController : MonoBehaviour
     {
         float landVolume = Mathf.Min(1.0f, Mathf.Abs(velocity) / 50.0f);
         audioSource.PlayOneShot(landSound, landVolume);
+        anim.Land();
     }
 
     void UpdateCamLook()

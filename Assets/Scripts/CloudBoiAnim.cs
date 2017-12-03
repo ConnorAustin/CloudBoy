@@ -32,16 +32,21 @@ public class CloudBoiAnim : MonoBehaviour {
         jumpAccumlator = 0;
     }
 
+    public void Land()
+    {
+        jumping = false;
+        leftFoot.transform.localRotation = Quaternion.Euler(new Vector3(Mathf.Sin(walkAccumlator * walkSpeed) * 10.0f, 0.0f, Mathf.Sin(walkAccumlator * walkSpeed) * stride));
+        rightFoot.transform.localRotation = Quaternion.Euler(new Vector3(-Mathf.Sin(walkAccumlator * walkSpeed) * 10.0f, 0.0f, -Mathf.Sin(walkAccumlator * walkSpeed) * stride));
+    }
+
 	void Update () {
         if(jumping)
         {
             leftFoot.transform.localRotation = Quaternion.Euler(new Vector3(0.0f, 0.0f, Mathf.Sin(jumpAccumlator) * 50.0f));
             rightFoot.transform.localRotation = Quaternion.Euler(new Vector3(0.0f, 0.0f, Mathf.Sin(jumpAccumlator) * 50.0f));
+            
             jumpAccumlator += 9.0f *  Time.deltaTime;
-            if(jumpAccumlator > Mathf.PI)
-            {
-                jumping = false;
-            }
+            jumpAccumlator = Mathf.Min(jumpAccumlator, Mathf.PI / 2.0f);
         }
 		else if (walking) {
 			walkAccumlator += Time.deltaTime;
