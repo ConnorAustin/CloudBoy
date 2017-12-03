@@ -40,6 +40,10 @@ public class WaterSpray : MonoBehaviour {
 
     void OnCollisionEnter(Collision collision)
     {
+        if(collision.gameObject.tag == "Squirtable")
+        {
+            collision.gameObject.GetComponent<Squirtable>().Wet();
+        }
         Destroy(gameObject);
     }
 }
