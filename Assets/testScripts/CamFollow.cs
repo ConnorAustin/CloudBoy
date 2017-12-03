@@ -2,7 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CamFollow : MonoBehaviour {
+public class CamFollow : MonoBehaviour
+{
     public float orbitDistance;
     public float desiredHeight;
     public float heightCorrectionSpeed;
@@ -12,12 +13,35 @@ public class CamFollow : MonoBehaviour {
     public Transform follow;
 
     float angle;
+    float desiredAngle;
+    bool updatingAngle;
 
-	void Start () {
-		
-	}
-	
-	void Update () {
+    void Start()
+    {
+
+    }
+
+    public void UpdateDirection(float desiredAngle)
+    {
+        updatingAngle = true;
+        this.desiredAngle = desiredAngle;
+    }
+
+    void UpdateAngle()
+    {
+        if(updatingAngle)
+        {
+            angle = Mathf.LerpAngle(angle, desiredAngle, 0.04f);
+            if(Mathf.Abs(angle - desiredAngle) < 1.0f)
+            {
+                angle = desiredAngle;
+                updatingAngle = false;
+            }
+        }
+    }
+
+    void Update()
+    {
         // Height correction
         float curHeight = transform.position.y - follow.position.y;
         float oldHeight = height;
@@ -34,14 +58,16 @@ public class CamFollow : MonoBehaviour {
             }
         }
 
-        Vector3 orbitPos = Vector3.forward * Mathf.Sin(angle) + Vector3.right * Mathf.Cos(angle);
+        Vector3 orbitPos = Vector3.forward * Mathf.Sin(Mathf.Deg2Rad * angle) + Vector3.right * Mathf.Cos(Mathf.Deg2Rad * angle);
         orbitPos *= orbitDistance;
 
         Vector3 basePos = follow.position;
         basePos.y = transform.position.y - oldHeight;
 
         transform.position = basePos + Vector3.up * height + orbitPos;
-        
+
         transform.LookAt(follow);
+
+        UpdateAngle();
     }
 }

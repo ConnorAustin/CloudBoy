@@ -28,13 +28,16 @@ public class GroundMover : MonoBehaviour
     // If the player is grounded or not
     bool grounded;
 
+    float timeOffGround;
+
     Rigidbody rigidBody;
 
     // Move vector for next update
     Vector3 move;
 
-    // Position to orient player
-    Vector3 lookAt;
+    // Position to orient mover
+    [HideInInspector]
+    public Vector3 lookAt = Vector3.forward;
 
     void Start()
     {
@@ -61,7 +64,7 @@ public class GroundMover : MonoBehaviour
     // Jumps the mover. Returns true if successful
     public bool Jump()
     {
-        if (grounded)
+        if (timeOffGround < 0.1f)
         {
             rigidBody.AddForce(Vector3.up * jumpPower);
             return true;
@@ -122,6 +125,14 @@ public class GroundMover : MonoBehaviour
         AddGravity();
         MoveGrounded();
         ClampVelocity();
+        if(!grounded)
+        {
+            timeOffGround += Time.deltaTime;
+        }
+        else
+        {
+            timeOffGround = 0;
+        }
         transform.LookAt(transform.position + lookAt);
     }
 }
