@@ -3,13 +3,25 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class blow : MonoBehaviour {
-	public float thrust = 40;
-	public Rigidbody rb;
+	public Vector3 Force = Vector3.zero;
+	private List<Collider> objects = new List<Collider>();
 
-	void Start() {
-		rb = GetComponent<Rigidbody>();
+	void FixedUpdate()
+	{
+		for (int i = 0; i < objects.Count; i++) {
+			print ("iterating");
+			Rigidbody body = objects [i].attachedRigidbody;
+			body.AddForce(Force);
+		}
 	}
-	void FixedUpdate() {
-		rb.AddForce(transform.forward * thrust);
+	void OnTriggerEnter(Collider other)
+	{
+		print ("Added: " + other); 
+		objects.Add(other);
+	}
+	void OnTriggerExit(Collider other)
+	{
+		print ("Removed: " + other); 
+		objects.Remove (other);
 	}
 }

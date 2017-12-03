@@ -9,7 +9,6 @@ public class enemyController : MonoBehaviour
 	public Transform point3;
 	public Transform player;
 	public float reactionDist = 10;
-	Vector3 newDir;
 
 	void FixedUpdate()
 	{
@@ -20,28 +19,24 @@ public class enemyController : MonoBehaviour
 
 		if (target == point1) {
 			transform.position = Vector3.MoveTowards (transform.position, target.position, step);
-			newDir = Vector3.RotateTowards(transform.position, target.position, step, 0.0f); 
 			if(transform.position == target.position) { target = point2; }
 
 		} else if (target == point2) {
 			transform.position = Vector3.MoveTowards (transform.position, target.position, step);
-			newDir = Vector3.RotateTowards(transform.position, target.position, step, 0.0f); 
 			if (transform.position == target.position) { target = point3; }
 		} else if (target == point3) {
 			transform.position = Vector3.MoveTowards (transform.position, target.position, step);
-			newDir = Vector3.RotateTowards(transform.position, target.position, step, 0.0f); 
 			if (transform.position == target.position) { target = point1; }
 		} else {
 			target = point1;
 		}
-			
 		if (dist < reactionDist) {
 			target = player;
 			transform.position = Vector3.MoveTowards (transform.position, target.position, step);
-			Vector3 newDir = Vector3.RotateTowards(transform.position, target.position, step, 0.0f); 
-			//if (dist < reactionDist) { target = point1; }
 		}
 
-		transform.rotation = Quaternion.LookRotation(newDir);
+		if(Vector3.Distance(transform.position, target.position) > 2) {
+			transform.LookAt(target);
+		}
 	}
 }
