@@ -30,7 +30,8 @@ public class GroundMover : MonoBehaviour
 
     float timeOffGround;
 
-    Rigidbody rigidBody;
+	[HideInInspector]
+    public Rigidbody rigidBody;
 
     // Move vector for next update
     Vector3 move;

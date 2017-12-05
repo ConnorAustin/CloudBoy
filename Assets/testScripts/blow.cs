@@ -9,19 +9,18 @@ public class blow : MonoBehaviour {
 	void FixedUpdate()
 	{
 		for (int i = 0; i < objects.Count; i++) {
-			print ("iterating");
+			print ("sloppy");
 			Rigidbody body = objects [i].attachedRigidbody;
-			body.AddForce(Force);
+			body.AddForce (Force);
 		}
 	}
 	void OnTriggerEnter(Collider other)
-	{
-		print ("Added: " + other); 
-		objects.Add(other);
+	{ 
+		if(other.attachedRigidbody != null)
+			objects.Add(other);
 	}
 	void OnTriggerExit(Collider other)
 	{
-		print ("Removed: " + other); 
 		objects.Remove (other);
 	}
 }
