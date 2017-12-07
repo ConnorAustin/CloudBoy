@@ -2,10 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GroundMover : MonoBehaviour
+public class PlayerMover : MonoBehaviour
 {
     // The point where he is considered on the ground
-    public BoxCollider groundBox;
+    public SphereCollider groundSphere;
 
     // Extra gravity
     public float gravity;
@@ -25,10 +25,17 @@ public class GroundMover : MonoBehaviour
     // Jumping force
     public float jumpPower;
 
+    // Held jumping
+    public float jumpDecay;
+    public float jumpSustain;
+    bool holdingJump;
+
     // If the player is grounded or not
     bool grounded;
+    bool canJump = true;
 
     float timeOffGround;
+    float curJumpSustain;
 
     Rigidbody rigidBody;
 
@@ -52,11 +59,13 @@ public class GroundMover : MonoBehaviour
     void UpdateGrounded()
     {
         bool oldGrounded = grounded;
-        grounded = Physics.CheckBox(groundBox.transform.position, groundBox.size / 2.0f, Quaternion.identity, LayerMask.GetMask("Ground"));
+        grounded = Physics.CheckSphere(groundSphere.transform.position, groundSphere.radius, LayerMask.GetMask("Ground"));
 
         // We landed
-        if(!oldGrounded && grounded && rigidBody.velocity.y < 0.0f)
+        if(!oldGrounded && grounded)
         {
+            canJump = true;
+            holdingJump = false;
             SendMessage("MoverLanded", rigidBody.velocity.y);
         }
     }
@@ -64,12 +73,22 @@ public class GroundMover : MonoBehaviour
     // Jumps the mover. Returns true if successful
     public bool Jump()
     {
-        if (timeOffGround < 0.1f)
+        if (canJump && timeOffGround < 0.2f)
         {
+            canJump = false;
+            holdingJump = true;
+            grounded = false;
+            transform.position += Vector3.up * 0.5f;
+            curJumpSustain = jumpSustain;
             rigidBody.AddForce(Vector3.up * jumpPower);
             return true;
         }
         return false;
+    }
+
+    public void JumpHeld(bool jumpHeld)
+    {
+        holdingJump = jumpHeld;
     }
 
     public void Move(Vector3 move)
@@ -121,11 +140,22 @@ public class GroundMover : MonoBehaviour
 
     void FixedUpdate()
     {
+        if(Input.GetKeyDown(KeyCode.G))
+        {
+            Debug.Log("grounded: " + grounded);
+            Debug.Log("timeOff: " + timeOffGround);
+            Debug.Log("canJump: " + canJump);
+        }
         UpdateGrounded();
         AddGravity();
         MoveGrounded();
         ClampVelocity();
-        if(!grounded)
+        if(holdingJump && !grounded)
+        {
+            rigidBody.AddForce(Vector3.up * curJumpSustain);
+            curJumpSustain = Mathf.Max(0, curJumpSustain - jumpDecay * Time.deltaTime);
+        }
+        if (!grounded)
         {
             timeOffGround += Time.deltaTime;
         }

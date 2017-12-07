@@ -10,14 +10,14 @@ public class PlayerController : MonoBehaviour
     public GameObject squirt;
 
     CloudBoiAnim anim;
-    GroundMover mover;
+    PlayerMover mover;
     AudioSource audioSource;
     float idleTime;
     float walkAnimSpeed;
 
     void Start()
     {
-        mover = GetComponent<GroundMover>();
+        mover = GetComponent<PlayerMover>();
         audioSource = GetComponent<AudioSource>();
         anim = transform.Find("CloudBoi").GetComponent<CloudBoiAnim>();
     }
@@ -55,6 +55,8 @@ public class PlayerController : MonoBehaviour
                 audioSource.PlayOneShot(jumpSound);
             }
         }
+        bool jumpHeld = Input.GetKey(KeyCode.Space);
+        mover.JumpHeld(jumpHeld);
 
         float right = Input.GetAxis("Horizontal");
         float forward = Input.GetAxis("Vertical");
