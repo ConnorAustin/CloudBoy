@@ -34,6 +34,9 @@ public class PlayerMover : MonoBehaviour
     bool grounded;
     bool canJump = true;
 
+    bool hovering;
+
+    float curGravity;
     float timeOffGround;
     float curJumpSustain;
 
@@ -67,6 +70,21 @@ public class PlayerMover : MonoBehaviour
             canJump = true;
             holdingJump = false;
             SendMessage("MoverLanded", rigidBody.velocity.y);
+            HoverMode(false);
+        }
+    }
+
+    public void HoverMode(bool hover) {
+        if (hover)
+        {
+            rigidBody.velocity = new Vector3(rigidBody.velocity.x, 0, rigidBody.velocity.z);
+            curGravity = 0.5f;
+            hovering = true;
+        }
+        else
+        {
+            hovering = false;
+            curGravity = gravity;
         }
     }
 
@@ -83,12 +101,17 @@ public class PlayerMover : MonoBehaviour
             rigidBody.AddForce(Vector3.up * jumpPower);
             return true;
         }
+
         return false;
     }
 
     public void JumpHeld(bool jumpHeld)
     {
         holdingJump = jumpHeld;
+        if(!holdingJump && hovering)
+        {
+            HoverMode(false);
+        }
     }
 
     public void Move(Vector3 move)
@@ -134,23 +157,18 @@ public class PlayerMover : MonoBehaviour
     {
         if (!grounded)
         {
-            rigidBody.AddForce(Vector3.down * gravity);
+            rigidBody.AddForce(Vector3.down * curGravity);
         }
     }
 
     void FixedUpdate()
     {
-        if(Input.GetKeyDown(KeyCode.G))
-        {
-            Debug.Log("grounded: " + grounded);
-            Debug.Log("timeOff: " + timeOffGround);
-            Debug.Log("canJump: " + canJump);
-        }
         UpdateGrounded();
         AddGravity();
         MoveGrounded();
         ClampVelocity();
-        if(holdingJump && !grounded)
+
+        if(!hovering && holdingJump && !grounded)
         {
             rigidBody.AddForce(Vector3.up * curJumpSustain);
             curJumpSustain = Mathf.Max(0, curJumpSustain - jumpDecay * Time.deltaTime);

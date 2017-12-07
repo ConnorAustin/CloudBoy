@@ -49,13 +49,25 @@ public class PlayerController : MonoBehaviour
         bool jump = Input.GetKeyDown(KeyCode.Space);
         if (jump)
         {
-            if (mover.Jump())
+            if (mover.IsGrounded())
             {
-                anim.Jump();
-                audioSource.PlayOneShot(jumpSound);
+                if (mover.Jump())
+                {
+                    anim.Jump();
+                    audioSource.PlayOneShot(jumpSound);
+                }
+            }
+            else
+            {
+                anim.Hover();
+                mover.HoverMode(true);
             }
         }
         bool jumpHeld = Input.GetKey(KeyCode.Space);
+        if (!jumpHeld)
+        {
+            anim.NoHover();
+        }
         mover.JumpHeld(jumpHeld);
 
         float right = Input.GetAxis("Horizontal");
