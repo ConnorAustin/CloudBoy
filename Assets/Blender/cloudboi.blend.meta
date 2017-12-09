@@ -27,6 +27,10 @@ ModelImporter:
     100038: Button
     100040: Coin
     100042: RedCoin
+    100044: firebot
+    100046: fireturret
+    100048: flamethrowergun
+    100050: Mushroom
     400000: CloudBoi
     400002: //RootNode
     400004: Cube
@@ -49,6 +53,10 @@ ModelImporter:
     400038: Button
     400040: Coin
     400042: RedCoin
+    400044: firebot
+    400046: fireturret
+    400048: flamethrowergun
+    400050: Mushroom
     2300000: CloudBoi
     2300002: Cube
     2300004: Cylinder_000
@@ -70,6 +78,10 @@ ModelImporter:
     2300036: Button
     2300038: Coin
     2300040: RedCoin
+    2300042: firebot
+    2300044: fireturret
+    2300046: flamethrowergun
+    2300048: Mushroom
     3300000: CloudBoi
     3300002: Cube
     3300004: Cylinder_000
@@ -91,6 +103,10 @@ ModelImporter:
     3300036: Button
     3300038: Coin
     3300040: RedCoin
+    3300042: firebot
+    3300044: fireturret
+    3300046: flamethrowergun
+    3300048: Mushroom
     4300000: Foot
     4300002: HatSpinner
     4300004: HatBottom
@@ -112,6 +128,10 @@ ModelImporter:
     4300036: Bottle
     4300038: Coin
     4300040: RedCoin
+    4300042: fireturret
+    4300044: Mushroom
+    4300046: flamethrowergun
+    4300048: firebot
     7400000: Default Take
     9500000: //RootNode
   materials:
