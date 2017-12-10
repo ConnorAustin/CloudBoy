@@ -40,7 +40,8 @@ public class PlayerMover : MonoBehaviour
     float timeOffGround;
     float curJumpSustain;
 
-    Rigidbody rigidBody;
+	[HideInInspector]
+    public Rigidbody rigidBody;
 
     // Move vector for next update
     Vector3 move;
