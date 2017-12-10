@@ -9,7 +9,6 @@ public class blow : MonoBehaviour {
 	void FixedUpdate()
 	{
 		for (int i = 0; i < objects.Count; i++) {
-			print ("sloppy");
 			Rigidbody body = objects [i].attachedRigidbody;
 			body.AddForce (Force);
 		}

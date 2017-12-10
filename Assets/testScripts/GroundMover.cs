@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerMover : MonoBehaviour
+public class GroundMover : MonoBehaviour
 {
     // The point where he is considered on the ground
     public SphereCollider groundSphere;
@@ -70,7 +70,7 @@ public class PlayerMover : MonoBehaviour
         {
             canJump = true;
             holdingJump = false;
-            SendMessage("MoverLanded", rigidBody.velocity.y);
+            SendMessage("MoverLanded", rigidBody.velocity.y, SendMessageOptions.DontRequireReceiver);
             HoverMode(false);
         }
     }

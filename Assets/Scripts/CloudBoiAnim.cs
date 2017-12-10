@@ -24,7 +24,6 @@ public class CloudBoiAnim : MonoBehaviour {
         hatMaxVel = hat.maxVel;
         leftFoot = transform.Find ("LeftFoot").gameObject;
 		rightFoot = transform.Find ("RightFoot").gameObject;
-        cloudPoint = transform.Find("CloudPoint").gameObject;
         walkAccumlator = 0.0f;
         jumpAccumlator = 0.0f;
         Puff();
@@ -69,7 +68,7 @@ public class CloudBoiAnim : MonoBehaviour {
         if(hovering)
         {
             var puff = GameObject.Instantiate(cloudPuff);
-            puff.transform.position = cloudPoint.transform.position + Random.insideUnitSphere * 0.5f;
+            puff.transform.position = transform.position + Random.insideUnitSphere * 0.5f;
         }
     }
 
