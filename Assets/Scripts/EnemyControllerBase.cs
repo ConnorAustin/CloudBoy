@@ -11,6 +11,10 @@ public class EnemyControllerBase : MonoBehaviour {
 	protected bool chasing = false;
     protected bool dead;
 
+	Vector3 home;
+	public float roamRadius = 10.0f;
+	public Vector3 roamPoint;
+
 	int patrolIndex;
 	GameObject nextPoint;
     Squirtable squirtable;
@@ -23,10 +27,17 @@ public class EnemyControllerBase : MonoBehaviour {
 	public void controllerInit() {
 		mover = GetComponent<GroundMover>();
 		findNearestPatrolPoint ();
+		pickRoamPoint ();
 		player = GameObject.FindWithTag ("Player");
+		home = transform.position;
 	}
 
 	void findNearestPatrolPoint() {
+		if (patrol == null) {
+			patrolIndex = -1;
+			nextPoint = null;
+			return;
+		}
 		int count = patrol.transform.childCount;
 
 		float bestDist = 1000000;
@@ -44,6 +55,12 @@ public class EnemyControllerBase : MonoBehaviour {
 			patrolIndex = bestInd;
 			nextPoint = patrol.transform.GetChild (patrolIndex).gameObject;
 		}
+	}
+
+	void pickRoamPoint() {
+		roamPoint = home;
+		roamPoint.x = Random.Range (-1000, 1000) / 1000.0f * roamRadius;
+		roamPoint.z = Random.Range (-1000, 1000) / 1000.0f * roamRadius;
 	}
 
     protected virtual void Die() {
@@ -86,8 +103,7 @@ public class EnemyControllerBase : MonoBehaviour {
 			diff.y = 0;
 
 			mover.Move (diff);
-		}
-		else if (nextPoint != null) {
+		} else if (nextPoint != null) {
 			if (chasing) {
 				chasing = false;
 				findNearestPatrolPoint ();
@@ -107,6 +123,23 @@ public class EnemyControllerBase : MonoBehaviour {
 
 			}
 
+		} else if(nextPoint == null) {
+			if (chasing) { 
+				chasing = false;
+				pickRoamPoint ();
+			}
+
+			Vector3 diff = roamPoint - transform.position;
+			diff.y = 0;
+
+			float distToPatrol = Vector3.Distance (transform.position, roamPoint);
+
+			mover.Move (diff);
+
+			if (distToPatrol < 1f) {
+				pickRoamPoint ();
+
+			}
 		}
 
 		EnemyUpdate ();

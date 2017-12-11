@@ -58,7 +58,7 @@ public class PlayerController : MonoBehaviour
 
     void FixedUpdate()
     {
-        bool jump = Input.GetKeyDown(KeyCode.Space);
+        bool jump = Input.GetKeyDown(KeyCode.X);
         if (jump)
         {
             if (mover.IsGrounded())
@@ -75,7 +75,7 @@ public class PlayerController : MonoBehaviour
                 mover.HoverMode(true);
             }
         }
-        bool jumpHeld = Input.GetKey(KeyCode.Space);
+        bool jumpHeld = Input.GetKey(KeyCode.X);
         if (!jumpHeld)
         {
             anim.NoHover();
@@ -112,7 +112,7 @@ public class PlayerController : MonoBehaviour
             anim.stride = walkAnimSpeed;
         }
 
-        if (Input.GetKey(KeyCode.RightControl))
+        if (Input.GetKey(KeyCode.Z))
         {
             Squirt();
         }

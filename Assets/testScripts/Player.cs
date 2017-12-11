@@ -9,7 +9,7 @@ public class Player : MonoBehaviour {
     int stars = 0;
     float water;
 
-	void Start () {
+	  void Start () {
         water = 100.0f;
         Time.timeScale = 1.0f;
     }
@@ -21,6 +21,10 @@ public class Player : MonoBehaviour {
             Canvas.self.Win();
         }
     }
+
+    public override void touchFire() {
+  		AddWater (-1.0f);
+  	}
 
     public void AddWater(float w)
     {
@@ -47,7 +51,7 @@ public class Player : MonoBehaviour {
     {
         return water;
     }
-	
+
 	void Update () {
         Canvas.self.SetWater(water);
     }
