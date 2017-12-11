@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -15,11 +16,18 @@ public class blow : MonoBehaviour {
 	}
 	void OnTriggerEnter(Collider other)
 	{ 
-		if(other.attachedRigidbody != null)
+		if(other.attachedRigidbody != null && other.gameObject.layer != LayerMask.NameToLayer("Squirt"))
 			objects.Add(other);
 	}
 	void OnTriggerExit(Collider other)
 	{
-		objects.Remove (other);
+        try
+        {
+            objects.Remove(other);
+        }
+        catch(Exception)
+        {
+
+        }
 	}
 }

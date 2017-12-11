@@ -91,6 +91,7 @@ GameObject:
   - component: {fileID: 65333401680920946}
   - component: {fileID: 114223062315266992}
   - component: {fileID: 114959072753889950}
+  - component: {fileID: 114613101163465454}
   m_Layer: 9
   m_Name: FanBot
   m_TagString: Blowable
@@ -327,6 +328,19 @@ MonoBehaviour:
   detectPlayerRange: 10
   force: 50
   upforce: 25
+--- !u!114 &114613101163465454
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1593216753796318}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 89a0709314a152f4181bb225b3132b68, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxFill: 10
+  percentFilled: 0
 --- !u!114 &114810370632235062
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -338,13 +352,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cfb42592833b0194796cc20af1f251cd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  groundBox: {fileID: 65573870056413886}
+  groundSphere: {fileID: 0}
   gravity: 20
   speed: 40
   maxRunningVelocity: 2
   maxYVelocity: 20
   slipperiness: 0.95
   jumpPower: 600
+  jumpDecay: 0
+  jumpSustain: 0
   rigidBody: {fileID: 0}
   lookAt: {x: 0, y: 0, z: 1}
 --- !u!114 &114959072753889950

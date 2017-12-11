@@ -8,12 +8,14 @@ public class PlayerController : MonoBehaviour
     public AudioClip jumpSound;
     public Transform squirtZone;
     public GameObject squirt;
+    public AudioClip squirtSound;
 
     CloudBoiAnim anim;
     GroundMover mover;
     AudioSource audioSource;
     float idleTime;
     float walkAnimSpeed;
+    float squirtSoundTime;
 
     void Start()
     {
@@ -38,10 +40,20 @@ public class PlayerController : MonoBehaviour
 
     void Squirt()
     {
+
         var s = GameObject.Instantiate(squirt);
         s.transform.position = squirtZone.position;
         var force = mover.lookAt * 500 + Vector3.up * 200;
         s.GetComponent<Rigidbody>().AddForce(force);
+        GetComponent<Player>().AddWater(-0.1f);
+
+        squirtSoundTime -= 1.0f;
+        if (squirtSoundTime < 0)
+        {
+            audioSource.PlayOneShot(squirtSound, 0.3f);
+            squirtSoundTime = 5.0f;
+        }
+            
     }
 
     void FixedUpdate()

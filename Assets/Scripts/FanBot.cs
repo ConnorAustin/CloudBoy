@@ -3,20 +3,31 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class FanBot : EnemyControllerBase {
-	
 	FanAnim fanAnim;
 	blow blower;
 	public float force;
 	public float upforce;
 
 	void Start () {
-		controllerInit ();
+        controllerInit ();
 		fanAnim = transform.Find ("FanBot").GetComponent<FanAnim> ();
 		blower = GetComponent<blow> ();
 	}
 
-	public override void EnemyUpdate() {
-		if (chasing) {
+    protected override void Die()
+    {
+        base.Die();
+        GetComponentInChildren<FanAnim>().enabled = false;
+        GetComponentInChildren<blow>().enabled = false;
+    }
+
+    public override void EnemyUpdate() {
+        if (dead)
+        {
+            return;
+        }
+
+        if (chasing) {
 			fanAnim.blowing = true;
 			blower.Force = transform.forward * force + Vector3.up * upforce;
 		} else {
