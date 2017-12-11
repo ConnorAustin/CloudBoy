@@ -76,13 +76,13 @@ public class GroundMover : MonoBehaviour
     }
 
     public void HoverMode(bool hover) {
-        if (hover)
+        if (hover && ! hovering)
         {
             rigidBody.velocity = new Vector3(rigidBody.velocity.x, 0, rigidBody.velocity.z);
-            curGravity = 0.1f;
+            curGravity = 0.5f;
             hovering = true;
         }
-        else
+        if(!hover)
         {
             hovering = false;
             curGravity = gravity;
@@ -143,7 +143,13 @@ public class GroundMover : MonoBehaviour
         velLen = Mathf.Min(maxRunningVelocity, velLen);
         vel = vel.normalized * velLen;
         vel.y = Mathf.Clamp(rigidBody.velocity.y, -maxYVelocity, maxYVelocity);
+
+        if(hovering)
+        {
+            vel.y = Mathf.Clamp(rigidBody.velocity.y, -maxYVelocity, 2.0f);
+        }
         rigidBody.velocity = vel;
+
     }
 
     void DecayRunSpeed()
