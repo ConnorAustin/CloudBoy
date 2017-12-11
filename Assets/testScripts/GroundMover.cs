@@ -79,7 +79,7 @@ public class GroundMover : MonoBehaviour
         if (hover)
         {
             rigidBody.velocity = new Vector3(rigidBody.velocity.x, 0, rigidBody.velocity.z);
-            curGravity = 0.5f;
+            curGravity = 0.1f;
             hovering = true;
         }
         else
