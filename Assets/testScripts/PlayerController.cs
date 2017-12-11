@@ -117,7 +117,7 @@ public class PlayerController : MonoBehaviour
             Squirt();
         }
 
-        if (Input.GetKeyDown(KeyCode.LeftControl))
+        if (Input.GetKeyDown(KeyCode.C))
         {
             UpdateCamLook();
         }

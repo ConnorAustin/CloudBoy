@@ -10,6 +10,7 @@ public class Canvas : MonoBehaviour {
 
     GameObject gameover;
     Text water;
+    Text message;
     GameObject win;
 
 	void Start () {
@@ -19,6 +20,7 @@ public class Canvas : MonoBehaviour {
         gameover = transform.Find("GameOver").gameObject;
         gameover.SetActive(false);
 
+        message = transform.Find("Message").GetComponent<Text>();
         win = transform.Find("Win").gameObject;
         win.SetActive(false);
     }
@@ -30,6 +32,10 @@ public class Canvas : MonoBehaviour {
 
     public void GameOver() {
         gameover.SetActive(true);
+    }
+
+    public void ShowMessage(string msg) {
+        message.text = msg;
     }
 
     public void Win()

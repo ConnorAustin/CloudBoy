@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Bottle : MonoBehaviour
 {
-    const float waterFill = 20;
+    const float waterFill = 40;
     const float respawnTime = 10.0f;
     bool dead = false;
 

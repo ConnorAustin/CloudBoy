@@ -12,7 +12,7 @@ public class CamFollow : MonoBehaviour
 
     public Transform follow;
 
-    float angle;
+    float angle = -90.0f;
     float desiredAngle;
     bool updatingAngle;
 

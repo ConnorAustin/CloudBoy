@@ -25,7 +25,7 @@ public class Fire : MonoBehaviour {
 	void Update () {
         if (lifetime < 1.0f)
         {
-            lifetime += Time.deltaTime * 2.0f;
+            lifetime += Time.deltaTime * 4.0f;
             if (lifetime >= 1.0f)
             {
                 sr.enabled = false;

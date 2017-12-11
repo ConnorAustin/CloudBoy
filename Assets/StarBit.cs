@@ -25,7 +25,7 @@ public class StarBit : MonoBehaviour {
     {
         if(lchase && other.gameObject.name == "Player")
         {
-            other.GetComponent<AudioSource>().PlayOneShot(collectSound);
+            other.GetComponent<AudioSource>().PlayOneShot(collectSound, 0.1f);
             Destroy(gameObject);
         }    
     }
