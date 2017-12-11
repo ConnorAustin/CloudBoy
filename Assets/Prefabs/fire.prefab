@@ -24,6 +24,8 @@ GameObject:
   - component: {fileID: 108638364028231254}
   - component: {fileID: 54176679399289396}
   - component: {fileID: 114301974971856884}
+  - component: {fileID: 114569988129100506}
+  - component: {fileID: 135490738585780614}
   m_Layer: 0
   m_Name: fire
   m_TagString: Untagged
@@ -91,6 +93,20 @@ Light:
   m_Lightmapping: 4
   m_AreaSize: {x: 1, y: 1}
   m_BounceIntensity: 1
+  m_FalloffTable:
+    m_Table[0]: 0
+    m_Table[1]: 0
+    m_Table[2]: 0
+    m_Table[3]: 0
+    m_Table[4]: 0
+    m_Table[5]: 0
+    m_Table[6]: 0
+    m_Table[7]: 0
+    m_Table[8]: 0
+    m_Table[9]: 0
+    m_Table[10]: 0
+    m_Table[11]: 0
+    m_Table[12]: 0
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
   m_ShadowRadius: 0
@@ -108,7 +124,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fade: 0
   shrink: 1
-  shrinkSpeed: -0.4
+  shrinkSpeed: -0.1
   fadeSpeed: 0
 --- !u!114 &114422746714194962
 MonoBehaviour:
@@ -123,6 +139,30 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   startingColor: {r: 0.928, g: 0.5451799, b: 0.1842353, a: 1}
   endingColor: {r: 0, g: 0, b: 0, a: 0.372}
+--- !u!114 &114569988129100506
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1484666392584622}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9430752306b40cd4aaeea1474dca6cfc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  deathTime: 0.5
+--- !u!135 &135490738585780614
+SphereCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1484666392584622}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.31
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!212 &212115866830490288
 SpriteRenderer:
   m_ObjectHideFlags: 1

@@ -127,6 +127,7 @@ public class GroundMover : MonoBehaviour
             rigidBody.AddForce(move * speed);
             move.y = 0;
             lookAt = Vector3.Lerp(lookAt, move, 0.2f);
+			move = Vector3.zero;
         }
         else
         {

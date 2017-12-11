@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class Player : MonoBehaviour {
+public class Player : Flameable {
 
     float water;
 
@@ -11,6 +11,10 @@ public class Player : MonoBehaviour {
         water = 100.0f;
         Time.timeScale = 1.0f;
     }
+
+	public override void touchFire() {
+		AddWater (-1.0f);
+	}
 
     public void AddWater(float w)
     {

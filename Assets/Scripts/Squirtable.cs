@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Squirtable : MonoBehaviour {
+public class Squirtable : Flameable {
 	public float maxFill = 100.0f;
 	public float percentFilled = 0.0f;
 
@@ -13,6 +13,11 @@ public class Squirtable : MonoBehaviour {
     {
         tag = "Squirtable";
     }
+
+	public override void touchFire() {
+		percentFilled = Mathf.Max (0.0f, percentFilled - 1.0f);
+		filled = false;
+	}
 
     public void Wet()
     {

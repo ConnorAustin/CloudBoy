@@ -25,7 +25,7 @@ public class Fire : MonoBehaviour {
 	void Update () {
         if (lifetime < 1.0f)
         {
-            lifetime += Time.deltaTime * 0.5f;
+            lifetime += Time.deltaTime * 2.0f;
             if (lifetime >= 1.0f)
             {
                 sr.enabled = false;
@@ -36,4 +36,13 @@ public class Fire : MonoBehaviour {
             light.color = Color.Lerp(startingColor, endingColor, lifetime + Random.Range(-0.1f, 0.1f));
         }
 	}
+
+	void OnTriggerEnter(Collider other) {
+		Flameable thing = other.gameObject.GetComponent<Flameable> ();
+		if (thing != null) {
+			thing.touchFire ();
+			Destroy (gameObject);
+		}
+	}
+
 }
