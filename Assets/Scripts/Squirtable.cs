@@ -33,7 +33,7 @@ public class Squirtable : MonoBehaviour {
             {
                 filled = true;
                 percentFilled = maxFill;
-                SendMessage("SquirtableFilled");
+                SendMessage("SquirtableFilled", SendMessageOptions.DontRequireReceiver);
             }
         }
 

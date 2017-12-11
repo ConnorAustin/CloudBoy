@@ -6,8 +6,27 @@ using UnityEngine;
 public class blow : MonoBehaviour {
 	public Vector3 Force = Vector3.zero;
 	private List<Collider> objects = new List<Collider>();
+    GameObject puff;
+    GameObject line;
 
-	void FixedUpdate()
+    void Start()
+    {
+        puff = Resources.Load<GameObject>("Prefabs/puff");
+        line = Resources.Load<GameObject>("Prefabs/WindLine");
+        Puff();
+    }
+
+    void Puff() {
+        Invoke("Puff", 0.2f);
+        if (enabled && Force.magnitude > 0.0f)
+        {
+            var p = GameObject.Instantiate(puff);
+            p.transform.position = transform.position + UnityEngine.Random.insideUnitSphere;
+            p.GetComponent<Rigidbody>().AddForce(Force * 15);
+        }
+    }
+
+    void FixedUpdate()
 	{
 		for (int i = 0; i < objects.Count; i++) {
 			Rigidbody body = objects [i].attachedRigidbody;
