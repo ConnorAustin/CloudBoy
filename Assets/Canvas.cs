@@ -10,6 +10,7 @@ public class Canvas : MonoBehaviour {
 
     GameObject gameover;
     Text water;
+    GameObject win;
 
 	void Start () {
         self = this;
@@ -17,6 +18,9 @@ public class Canvas : MonoBehaviour {
         water.color = maxWater;
         gameover = transform.Find("GameOver").gameObject;
         gameover.SetActive(false);
+
+        win = transform.Find("Win").gameObject;
+        win.SetActive(false);
     }
 
     public void SetWater(float w) {
@@ -27,8 +31,13 @@ public class Canvas : MonoBehaviour {
     public void GameOver() {
         gameover.SetActive(true);
     }
-	
-	void Update () {
+
+    public void Win()
+    {
+        win.SetActive(true);
+    }
+
+    void Update () {
 		
 	}
 }

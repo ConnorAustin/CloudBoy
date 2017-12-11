@@ -4,12 +4,22 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class Player : MonoBehaviour {
+    public int starsToGet;
 
+    int stars = 0;
     float water;
 
 	void Start () {
         water = 100.0f;
         Time.timeScale = 1.0f;
+    }
+
+    public void AddStar() {
+        stars++;
+        if(stars == starsToGet)
+        {
+            Canvas.self.Win();
+        }
     }
 
     public void AddWater(float w)
