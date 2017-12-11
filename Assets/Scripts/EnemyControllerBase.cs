@@ -14,6 +14,7 @@ public class EnemyControllerBase : MonoBehaviour {
 	Vector3 home;
 	public float roamRadius = 10.0f;
 	public Vector3 roamPoint;
+	float roamStart;
 
 	int patrolIndex;
 	GameObject nextPoint;
@@ -27,9 +28,10 @@ public class EnemyControllerBase : MonoBehaviour {
 	public void controllerInit() {
 		mover = GetComponent<GroundMover>();
 		findNearestPatrolPoint ();
+		home = transform.position;
 		pickRoamPoint ();
 		player = GameObject.FindWithTag ("Player");
-		home = transform.position;
+
 	}
 
 	void findNearestPatrolPoint() {
@@ -59,8 +61,9 @@ public class EnemyControllerBase : MonoBehaviour {
 
 	void pickRoamPoint() {
 		roamPoint = home;
-		roamPoint.x = Random.Range (-1000, 1000) / 1000.0f * roamRadius;
-		roamPoint.z = Random.Range (-1000, 1000) / 1000.0f * roamRadius;
+		roamPoint.x += ((float)Random.Range (-1000, 1000)) / 1000.0f * roamRadius;
+		roamPoint.z += ((float)Random.Range (-1000, 1000)) / 1000.0f * roamRadius;
+		roamStart = Time.time;
 	}
 
     protected virtual void Die() {
@@ -139,6 +142,8 @@ public class EnemyControllerBase : MonoBehaviour {
 			if (distToPatrol < 1f) {
 				pickRoamPoint ();
 
+			} else if (Time.time - roamStart > 5.0f) {
+				pickRoamPoint ();
 			}
 		}
 

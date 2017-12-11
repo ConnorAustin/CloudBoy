@@ -8,7 +8,7 @@ public class FlameBot : EnemyControllerBase {
 
 	void Start () {
         controllerInit ();
-		firethrower = GameObject.Find ("flamethrower").GetComponent<TestFirethrower> ();
+		firethrower = transform.Find ("flamethrower").GetComponent<TestFirethrower> ();
 	}
 
     protected override void Die()

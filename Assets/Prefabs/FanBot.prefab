@@ -69,7 +69,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4914100344479556}
-  - component: {fileID: 65573870056413886}
+  - component: {fileID: 135014513571183830}
   m_Layer: 0
   m_Name: GroundPoint
   m_TagString: Untagged
@@ -92,9 +92,9 @@ GameObject:
   - component: {fileID: 114223062315266992}
   - component: {fileID: 114959072753889950}
   - component: {fileID: 114613101163465454}
-  m_Layer: 9
+  m_Layer: 0
   m_Name: FanBot
-  m_TagString: Blowable
+  m_TagString: Squirtable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -132,8 +132,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1593216753796318}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -1.73, y: 2.79, z: -9.29}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: -18.36, y: 2.9461, z: -9.1087}
+  m_LocalScale: {x: 1.9746207, y: 1.97462, z: 1.97462}
   m_Children:
   - {fileID: 4914100344479556}
   - {fileID: 4708268656407860}
@@ -162,7 +162,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1538234423335608}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.811, z: 0}
+  m_LocalPosition: {x: 0, y: -0.663, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4268218661272076}
@@ -283,20 +283,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 2.5}
-  m_Center: {x: 0, y: 0, z: 1.5}
---- !u!65 &65573870056413886
-BoxCollider:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1538234423335608}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 0.6, y: 0.5, z: 0.6}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 1, y: 1, z: 1.34}
+  m_Center: {x: 0, y: 0, z: 1.17}
 --- !u!114 &114052051057686316
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -326,6 +314,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   patrol: {fileID: 0}
   detectPlayerRange: 10
+  roamRadius: 8
+  roamPoint: {x: -28.922, y: 5.77, z: 23.908}
   force: 50
   upforce: 25
 --- !u!114 &114613101163465454
@@ -341,6 +331,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxFill: 10
   percentFilled: 0
+  playPop: 0
+  givepoint: 0
 --- !u!114 &114810370632235062
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -352,7 +344,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cfb42592833b0194796cc20af1f251cd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  groundSphere: {fileID: 0}
+  groundSphere: {fileID: 135014513571183830}
   gravity: 20
   speed: 40
   maxRunningVelocity: 2
@@ -361,8 +353,8 @@ MonoBehaviour:
   jumpPower: 600
   jumpDecay: 0
   jumpSustain: 0
-  rigidBody: {fileID: 0}
-  lookAt: {x: 0, y: 0, z: 1}
+  rigidBody: {fileID: 54281130309391068}
+  lookAt: {x: 0.9989958, y: 0, z: -0.044802696}
 --- !u!114 &114959072753889950
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -375,3 +367,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Force: {x: 0, y: 0, z: 0}
+--- !u!135 &135014513571183830
+SphereCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1538234423335608}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.24
+  m_Center: {x: 0, y: 0, z: 0}

@@ -8,16 +8,19 @@ public class Mushroom : MonoBehaviour {
     Squirtable squirtable;
     float sizeToScale;
     BoxCollider box;
+	CapsuleCollider cap;
     bool full = false;
 
 	void Start () {
         normalSize = transform.localScale;
         squirtable = transform.parent.GetComponent<Squirtable>();
         box = transform.parent.GetComponent<BoxCollider>();
+		cap = transform.parent.GetComponent<CapsuleCollider> ();
         transform.parent.gameObject.layer = LayerMask.NameToLayer("Default");
 
         var player = GameObject.Find("Player").GetComponent<CapsuleCollider>();
         Physics.IgnoreCollision(box, player);
+		Physics.IgnoreCollision(cap, player);
 	}
 
     void Shine()
@@ -40,6 +43,7 @@ public class Mushroom : MonoBehaviour {
             Shine();
             var player = GameObject.Find("Player").GetComponent<CapsuleCollider>();
             Physics.IgnoreCollision(box, player, false);
+			Physics.IgnoreCollision(cap, player, false);
             transform.parent.gameObject.layer = LayerMask.NameToLayer("Ground");
         }
     }

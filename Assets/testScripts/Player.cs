@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class Player : MonoBehaviour {
+public class Player : Flameable {
     public int starsToGet;
 
     int stars = 0;
